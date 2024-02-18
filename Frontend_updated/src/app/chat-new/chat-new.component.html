@@ -1,0 +1,339 @@
+<section style="background-color: #f8f4f4">
+  <div class="container pb-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-2 col-lg-2 col-xl-2"></div>
+      <div class="col-md-8 col-lg-8 col-xl-6">
+        <div class="bot-title py-3">
+          <h5 class="mb-0">Chat Bot</h5>
+        </div>
+        <div class="card">
+          <div
+            class="card-header d-flex justify-content-between align-items-center p-1"
+            style="border-top: 4px solid #333333"
+          >
+            <div>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnvS8xjfTAZa-iibWT0Vxsc2ry2WPb-eoVKoqyCtURJvIVxcVeFm3a1HFENk4okctSxEQ&usqp=CAU"
+                alt="bot"
+                style="width: 45px; height: 100%"
+              />
+            </div>
+            <div>
+              <div class="menu">
+                <div
+                  class="menu-icon"
+                  (click)="openMenuModal(menuModalContent)"
+                >
+                  &hellip;
+                </div>
+              </div>
+              <ng-template #menuModalContent>
+                <div class="modal-header d-flex flex-row justify-content-end">
+                  <!-- <h5 class="modal-title">Menu</h5> -->
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="closeMenu()"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <span id="clear" (click)="menuItem('Clear')">Clear Chat</span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+          <div
+            #scrollMe
+            class="card-body"
+            data-mdb-perfect-scrollbar="true"
+            style="
+              position: relative;
+              height: 56vh;
+              overflow-y: auto;
+              overflow-x: hidden;
+            "
+            [scrollTop]="scrollMe.scrollHeight"
+          >
+            <div *ngFor="let item of appService.messageArray">
+              <div class="item" *ngIf="item.name == 'bot'">
+                <div class="d-flex justify-content-between">
+                  <p class="small mb-1">Bot</p>
+                </div>
+                <div class="d-flex flex-row justify-content-start">
+                  <!-- <img
+                    src="https://as1.ftcdn.net/v2/jpg/01/93/99/80/1000_F_193998027_0qmOrqCejnWoj6liueIilAr2yAqilCtc.jpg"
+                    alt="avatar 1"
+                    style="width: 45px; height: 100%"
+                  /> -->
+                  <div>
+                    <svg
+                      version="1.0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="40px"
+                      height="40px"
+                      viewBox="0 0 225.000000 225.000000"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      <g
+                        transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)"
+                        fill="#333333"
+                        stroke="none"
+                      >
+                        <path
+                          d="M950 1739 c-188 -49 -347 -169 -441 -336 -21 -37 -29 -43 -57 -43
+-41 0 -104 -31 -131 -66 -36 -46 -43 -90 -39 -260 3 -157 4 -162 31 -203 31
+-46 91 -80 142 -81 23 0 34 -7 47 -30 20 -35 39 -45 72 -36 36 9 40 38 13 93
+-52 103 -62 150 -61 283 0 109 4 134 26 192 38 101 85 173 160 243 112 106
+259 165 413 165 319 0 583 -248 602 -566 13 -202 -86 -428 -212 -485 -31 -14
+-65 -19 -148 -19 -94 0 -112 3 -134 20 -21 17 -41 20 -113 20 -79 0 -90 -2
+-114 -25 -29 -27 -36 -84 -12 -104 11 -9 84 -11 273 -9 248 3 260 4 301 26 62
+33 126 101 161 170 29 57 31 59 76 64 61 7 118 47 144 100 19 39 21 62 21 201
+0 163 -8 206 -48 250 -26 29 -87 57 -124 57 -28 0 -37 6 -53 37 -147 274 -490
+422 -795 342z"
+                        />
+                        <path
+                          d="M823 1415 c-40 -17 -115 -117 -142 -189 -55 -148 -46 -332 20 -402
+29 -30 52 -30 209 1 162 32 268 32 430 0 192 -38 207 -35 238 48 58 154 24
+345 -86 484 -59 74 -91 82 -216 54 -119 -26 -186 -26 -296 -1 -101 23 -115 24
+-157 5z m112 -240 c39 -38 37 -88 -6 -127 -38 -36 -70 -35 -111 1 -25 22 -32
+36 -32 66 0 75 96 114 149 60z m501 1 c41 -35 39 -89 -4 -127 -41 -37 -73 -37
+-114 0 -89 80 28 205 118 127z"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <div style="max-width: 80%">
+                    <p
+                      class="small p-2 ms-3 mb-3 rounded-3"
+                      style="
+                        background-color: #f5f6f7;
+                        word-wrap: break-word;
+                        white-space: pre-line;
+                        margin-right: auto;
+                      "
+                    >
+                      {{ item.message }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="item right" *ngIf="item.name == 'user'">
+                <div class="msg">
+                  <div class="d-flex justify-content-end">
+                    <p class="small mb-1">You</p>
+                  </div>
+
+                  <div class="d-flex flex-row justify-content-end mb-1 pt-1">
+                    <div style="max-width: 80%">
+                      <p
+                        class="small p-1 me-3 mb-1 text-white rounded-3"
+                        style="
+                          background-color: #174ae4;
+                          word-wrap: break-word;
+                          white-space: pre-line;
+                          margin-left: auto;
+                        "
+                      >
+                        {{ item.message }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card-footer text-muted d-flex justify-content-start align-items-center p-3"
+          >
+            <div class="input-group mb-0">
+              <input
+                class="form-control"
+                id="input"
+                type="text"
+                placeholder="Type your message"
+                autocomplete="off"
+                [(ngModel)]="message"
+                (keyup.enter)="sendMessage()"
+                required
+              />
+            </div>
+            <div class="send-msg" (click)="sendMessage()">
+              <svg
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25px"
+                height="25px"
+                viewBox="0 0 222.000000 227.000000"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <g
+                  transform="translate(0.000000,227.000000) scale(0.100000,-0.100000)"
+                  fill="#333333"
+                  stroke="none"
+                >
+                  <path
+                    d="M133 2155 c-34 -15 -53 -41 -53 -75 0 -12 41 -212 90 -443 64 -297
+97 -430 111 -449 20 -28 20 -28 0 -55 -15 -20 -47 -151 -111 -451 -49 -232
+-90 -433 -90 -447 0 -13 11 -36 24 -52 19 -22 32 -27 62 -27 30 1 260 109 984
+463 585 286 954 471 968 487 28 32 28 76 0 108 -23 26 -1862 929 -1933 949
+-11 3 -34 0 -52 -8z m989 -543 c505 -246 918 -450 918 -453 0 -3 -78 -43 -172
+-89 -95 -46 -517 -251 -936 -456 -639 -312 -763 -369 -759 -351 3 12 42 198
+88 412 45 215 85 393 88 397 5 5 1023 79 1094 78 15 0 27 3 27 8 0 4 -224 23
+-497 41 -274 18 -527 36 -562 40 l-64 6 -88 410 c-49 226 -89 412 -89 414 0 7
+44 -15 952 -457z"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2 d-flex topicbutton">
+        <div
+          class="btn-group btn-group-vertical align-items-center justify-content-center"
+          role="group"
+          aria-label="Basic radio toggle button group"
+          name="buttongroup"
+          ngDefaultControl
+        >
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox1"
+            id="btncheckbox1"
+            autocomplete="off"
+            [ngModel]="selectedTopics['All']"
+            (change)="updateSelectedTopics('All')"
+            value="All"
+          />
+          <label class="btn button-bg" for="btncheckbox1"> All </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox2"
+            id="btncheckbox2"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Health']"
+            (change)="updateSelectedTopics('Health')"
+            value="Health"
+          />
+          <label class="btn button-bg" for="btncheckbox2"> Health </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox3"
+            id="btncheckbox3"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Environment']"
+            (change)="updateSelectedTopics('Environment')"
+            value="Environment"
+          />
+          <label class="btn button-bg" for="btncheckbox3"> Environment </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox4"
+            id="btncheckbox4"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Technology']"
+            (change)="updateSelectedTopics('Technology')"
+            value="Technology"
+          />
+          <label class="btn button-bg" for="btncheckbox4"> Technology </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox5"
+            id="btncheckbox5"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Economy']"
+            (change)="updateSelectedTopics('Economy')"
+            value="Economy"
+          />
+          <label class="btn button-bg" for="btncheckbox5"> Economy </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox6"
+            id="btncheckbox6"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Entertainment']"
+            (change)="updateSelectedTopics('Entertainment')"
+            value="Entertainment"
+          />
+          <label class="btn button-bg" for="btncheckbox6">
+            Entertainment
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox7"
+            id="btncheckbox7"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Sports']"
+            (change)="updateSelectedTopics('Sports')"
+            value="Sports"
+          />
+          <label class="btn button-bg" for="btncheckbox7"> Sports </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox8"
+            id="btncheckbox8"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Politics']"
+            (change)="updateSelectedTopics('Politics')"
+            value="Politics"
+          />
+          <label class="btn button-bg" for="btncheckbox8"> Politics </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox9"
+            id="btncheckbox9"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Education']"
+            (change)="updateSelectedTopics('Education')"
+            value="Education"
+          />
+          <label class="btn button-bg" for="btncheckbox9"> Education </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox10"
+            id="btncheckbox10"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Travel']"
+            (change)="updateSelectedTopics('Travel')"
+            value="Travel"
+          />
+          <label class="btn button-bg" for="btncheckbox10"> Travel </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="btncheckbox11"
+            id="btncheckbox11"
+            autocomplete="off"
+            [ngModel]="selectedTopics['Food']"
+            (change)="updateSelectedTopics('Food')"
+            value="Food"
+          />
+          <label class="btn button-bg" for="btncheckbox11"> Food </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

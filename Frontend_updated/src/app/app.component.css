@@ -1,0 +1,22 @@
+.top-bar {
+  height: 60px;
+  background-color: #1b87b5;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-bar h5 {
+  color: white;
+  margin: 0;
+}
+
+.top-bar button {
+  min-width: 8%;
+  background-color: white;
+  color: #1b87b5;
+}
+.view-text {
+  margin-right: 20px;
+}

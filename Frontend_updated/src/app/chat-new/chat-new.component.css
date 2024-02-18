@@ -1,0 +1,99 @@
+
+.topicbutton {
+  align-self: center;
+}
+
+.button-bg {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #29eee8;
+}
+.button-bg:hover,
+.button-bg:focus,
+.button-bg:active,
+.button-bg.active,
+.open .dropdown-toggle.button-bg {
+  color: #000000;
+  background-color: #f0f0f0;
+  border-color: #ffa900;
+}
+
+.button-bg:active,
+.button-bg.active,
+.open .dropdown-toggle.button-bg {
+  background-image: none;
+}
+.button-bg.disabled,
+.button-bg[disabled],
+fieldset[disabled] .button-bg,
+.button-bg.disabled:hover,
+.button-bg[disabled]:hover,
+fieldset[disabled] .button-bg:hover,
+.button-bg.disabled:focus,
+.button-bg[disabled]:focus,
+fieldset[disabled] .button-bg:focus,
+.button-bg.disabled:active,
+.button-bg[disabled]:active,
+fieldset[disabled] .button-bg:active,
+.button-bg.disabled.active,
+.button-bg[disabled].active,
+fieldset[disabled] .button-bg.active {
+  background-color: #b5aaaa;
+  border-color: #ffa900;
+}
+.button-bg .badge {
+  color: #b5aaaa;
+  background-color: #000000;
+}
+.button-bg {
+  --bs-btn-active-bg: #f9994b;
+}
+.card-body {
+  position: relative;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.card-body::-webkit-scrollbar {
+  width: 6px;
+}
+.card-body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+.bot-title {
+  text-align: center;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+.menu {
+  position: relative;
+  right: 10px;
+  bottom: 10px;
+}
+
+.menu-icon {
+  color: #333;
+  font-size: 30px;
+  cursor: pointer;
+}
+.modal-body span {
+  display: block;
+  padding: 15px;
+  color: #333;
+  text-decoration: none;
+}
+.modal-body span:hover {
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+}
+#menuModalContent {
+  width: 30px;
+}
+.send-msg {
+  position: relative;
+  left: 5px;
+}

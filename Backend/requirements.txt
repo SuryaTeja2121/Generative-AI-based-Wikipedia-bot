@@ -1,0 +1,8 @@
+torch
+transformers
+scikit-learn
+pysolr
+nltk
+google-generativeai
+flask
+flask_cors
